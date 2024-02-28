@@ -3,21 +3,33 @@
 import React from "react";
 import "leaflet/dist/leaflet.css";
 import { MapContainer, TileLayer, CircleMarker, Popup } from "react-leaflet";
+import { useStaticQuery, graphql } from "gatsby";
 
 const Map = () => {
-  const position = [51.505, -0.09]
+  const data = useStaticQuery(graphql`
+    query NewsQuery {
+      allStrapiNewsIndividual {
+        nodes {
+          title
+        }
+      }
+    }
+  `);
+
+  const offset = () => Math.random() * 5;
+
+  const News = () => (
+    data.allStrapiNewsIndividual.nodes.map((node) => (
+      <CircleMarker center={[52 + offset(), 10 + offset()]}>
+        <Popup>{node.title}</Popup>
+      </CircleMarker>
+    ))
+  )
 
   return (
-    <MapContainer center={position} zoom={13} scrollWheelZoom={false} style={{ height: 500 }}>
-      <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-      <CircleMarker center={position}>
-        <Popup>
-          A pretty CSS3 popup. <br /> Easily customizable.
-        </Popup>
-      </CircleMarker>
+    <MapContainer center={[52, 10]} zoom={7} scrollWheelZoom={false} style={{ height: 500 }}>
+      <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+      <News />
     </MapContainer>
   )
 }
