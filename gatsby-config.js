@@ -29,10 +29,10 @@ module.exports = {
     {
       resolve: "gatsby-source-strapi",
       options: {
-        apiURL: "https://content.dwenteignen.de",
-        accessToken: "6b01ef8352569dba5f4539b0104fd4c6a3e0518d2aea7800111c4050f39c72584112756a604df9b0eda644563aed97a25c93201342d5e24e5e1534406036571b3f55a15742ad8e50798bc41e64770d3b112797ca46fa34e01c0459e0208e0d6aaada169a3a8cd44357e23b91c692f3ae3bcf51dab91d5480f284aef4ab2bab0b",
+        apiURL: "https://feminizidmap-backend.onrender.com",
+        accessToken: "6eb3adc42b1efa246053efcf62455fa06dd15c7505d351955531d0df661bcb5edbf997749964153d809577a79f0dc0675989fa8d955ea977dc19ff7d2e19bd645d5064ab176b107aa892d2b3204e4f302e004530ca914607d27a5c824fdd5d290e07c7baa43867946c0334e52d6db90a66fb8474ea5a8a4e24b1009e1a88d2e1",
         collectionTypes: [
-          "news-individual",
+          "case",
         ],
         queryLimit: 1000,
       },

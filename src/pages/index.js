@@ -8,11 +8,11 @@ import offset from "../utils/offset.js";
 
 const IndexPage = () => {
   const data = useStaticQuery(graphql`
-    query NewsQuery {
-      allStrapiNewsIndividual {
+    query CasesQuery {
+      allStrapiCase {
         nodes {
-          title
-          content { data { content } }
+          identifier
+          crime_date
         }
       }
     }
@@ -21,32 +21,32 @@ const IndexPage = () => {
   const [activeTitle, setActiveTitle] = useState(null);
 
   const Marker = () => (
-    data.allStrapiNewsIndividual.nodes.map((node) => {
-      const randomCoords = [52 + offset(node.title), 10 + offset(node.title.slice(0, 10))]
+    data.allStrapiCase.nodes.map((node) => {
+      const randomCoords = [52 + offset(node.identifier), 10 + offset(node.identifier.slice(0, 10))]
 
       return <CircleMarker
-        key={node.title}
+        key={node.identifier}
         center={randomCoords}
-        color="none" fillColor={node.title == activeTitle ? "red" : "white"}
+        color="none" fillColor={node.identifier == activeTitle ? "red" : "white"}
         fillOpacity={0.7}
-        eventHandlers={{ click: () => setActiveTitle(node.title) }}
+        eventHandlers={{ click: () => setActiveTitle(node.identifier) }}
       >
       </CircleMarker>
     })
   )
 
   const List = () => (
-    data.allStrapiNewsIndividual.nodes.map((node) => (
+    data.allStrapiCase.nodes.map((node) => (
       <ul>
         <li
-          key={node.title}
-          style={{ color: node.title == activeTitle ? "red" : "black" }}
-          onClick={() => setActiveTitle(node.title)}
+          key={node.identifier}
+          style={{ color: node.identifier == activeTitle ? "red" : "black" }}
+          onClick={() => setActiveTitle(node.identifier)}
         >
-          {node.title}
+          {node.identifier}
           {/* show content if active */}
-          {node.title == activeTitle &&
-            <p style={{ fontSize: 10 }}>{node.content.data.content.slice(0, 500)}</p>}
+          {node.identifier == activeTitle &&
+            <b style={{ fontSize: 20 }}>{node.crime_date}</b>}
         </li>
       </ul>
     ))
