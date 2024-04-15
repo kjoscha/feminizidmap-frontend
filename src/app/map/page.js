@@ -1,5 +1,8 @@
 import styles from "./page.module.css";
-import Map from "./map";
+import dynamic from 'next/dynamic';
+
+// this is necessary since leaflet is not server-side compatible
+const Map = dynamic(() => import("./map.js"), { ssr: false })
 
 async function getData() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL}/api/cases?populate=deep&pagination[limit]=-1`);

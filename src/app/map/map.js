@@ -1,3 +1,4 @@
+// this is necessary since leaflet is not server-side compatible
 "use client"
 
 import styles from "./page.module.css";
