@@ -1,4 +1,4 @@
-import { Container, Nav, Navbar, NavbarToggle, NavbarCollapse, NavLink } from 'react-bootstrap';
+import { Container, Nav, Navbar, NavbarToggle, NavbarCollapse } from 'react-bootstrap';
 import Link from 'next/link';
 
 export default function Navigation() {
