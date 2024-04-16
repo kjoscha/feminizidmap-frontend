@@ -22,9 +22,9 @@ export default function Map({ cases }) {
       {cases.map((c) => (
         <CircleMarker
           key={c.id}
-          center={[c.address?.coordinates?.coordinates?.lat || 52, c.address?.coordinates?.coordinates?.lng || 12]}
-          pathOptions={{ color: 'rgb(181, 35, 243)', opacity: 0, fillOpacity: 0.7 }}
-          radius={10}
+          center={[c.address?.coordinates?.coordinates?.lat || 0, c.address?.coordinates?.coordinates?.lng || 0]}
+          pathOptions={{ color: 'rgb(181, 35, 243)', opacity: 0, fillOpacity: 0.5 }}
+          radius={7}
         />
       ))}
     </MapContainer>

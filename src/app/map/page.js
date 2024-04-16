@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic';
 const Map = dynamic(() => import("./map.js"), { ssr: false })
 
 async function getData() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL}/api/cases?populate=deep&pagination[limit]=-1`);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL}/api/cases?populate=deep&pagination[pageSize]=100000`);
   if (!res.ok) { throw new Error('Failed to fetch data') }
   return res.json()
 }
